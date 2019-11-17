@@ -10,7 +10,7 @@ namespace MvcBasic.Controllers
     public class ClienteController : Controller
     {
         // GET: Cliente
-        public ActionResult Index()
+        public ActionResult Teste()
         {
             var cliente = new Cliente()
             {
@@ -18,7 +18,7 @@ namespace MvcBasic.Controllers
                 SobreNome = "NET",
                 DataCadastro = DateTime.Now
             };
-            return View(cliente);
+            return View("Index",cliente);
         }
     }
 }
