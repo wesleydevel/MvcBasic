@@ -18,7 +18,67 @@ namespace MvcBasic.Controllers
                 SobreNome = "NET",
                 DataCadastro = DateTime.Now
             };
-            return View("Index",cliente);
+            return View("Index", cliente);
+        }
+
+        public ActionResult Lista()
+        {
+            var listaClientes = new List<Cliente>()
+            {
+                new Cliente()
+                {
+                    Id = 1,
+                    Nome = "Wesley",
+                    SobreNome = "Santos",
+                    DataCadastro = DateTime.Now
+                },
+                new Cliente()
+                {
+                    Id = 2 ,
+                    Nome = "Rogéria",
+                    SobreNome = "Santos",
+                    DataCadastro = DateTime.Now
+                }
+            };
+            return View(listaClientes);
+        }
+
+        public ActionResult Pesquisa(int? id)
+        {
+            var listaCliente = new List<Cliente>()
+            {
+                new Cliente()
+                {
+                    Id = 1 ,
+                    Nome = "Wesley",
+                    SobreNome = "Santos",
+                    DataCadastro = DateTime.Now
+                },
+                new Cliente()
+                {
+                    Id = 2,
+                    Nome = "Rogéria",
+                    SobreNome = "Santos",
+                    DataCadastro = DateTime.Now
+                },
+                new Cliente()
+                {
+                    Id = 3,
+                    Nome = "Gonçala",
+                    SobreNome = "Pereira",
+                    DataCadastro = DateTime.Now
+                },
+                new Cliente()
+                {
+                    Id = 4 ,
+                    Nome = "Sebastião",
+                    SobreNome = "Rosario",
+                    DataCadastro = DateTime.Now
+                }
+            };
+
+            var cliente = listaCliente.Where(c => c.Id == id).ToList();
+            return View("Lista", cliente);
         }
     }
 }
