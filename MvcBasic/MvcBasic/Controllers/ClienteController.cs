@@ -43,8 +43,9 @@ namespace MvcBasic.Controllers
             return View(listaClientes);
         }
 
-        public ActionResult Pesquisa(int? id)
+        public ActionResult Pesquisa(int id, string nome)
         {
+
             var listaCliente = new List<Cliente>()
             {
                 new Cliente()
@@ -77,7 +78,7 @@ namespace MvcBasic.Controllers
                 }
             };
 
-            var cliente = listaCliente.Where(c => c.Id == id).ToList();
+            var cliente = listaCliente.Where(c => c.Nome == nome).ToList();
             return View("Lista", cliente);
         }
     }
