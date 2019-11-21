@@ -12,3 +12,13 @@
     <li>@Html.DisplayFor(model => cliente.DataCadastro)</li>
 }
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("li").click(function () {
+                $(this).hide()
+            })
+        })
+    </script>
+}
