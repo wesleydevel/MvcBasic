@@ -18,6 +18,9 @@ namespace MvcBasic.Controllers
                 SobreNome = "NET",
                 DataCadastro = DateTime.Now
             };
+
+            ViewBag.Cliente = cliente;
+
             return View("Index", cliente);
         }
 

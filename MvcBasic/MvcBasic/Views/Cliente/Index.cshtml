@@ -6,14 +6,15 @@
 <h2>Cliente</h2>
 
 <div>
-    <p>
-        @Model.Nome
-    </p>
-    <p>
-        @Model.SobreNome
-    </p>
-    <p>
-        @Model.DataCadastro
-    </p>
+    <p>@Model.Nome</p>
+    <p>@Model.SobreNome</p>
+    <p>@Model.DataCadastro</p>
 </div>
+
+@{ 
+    var cliente = ViewBag.Cliente;
+    <p><b>@cliente.Nome</b></p>
+}
+
+
 
