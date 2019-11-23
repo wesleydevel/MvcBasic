@@ -19,7 +19,11 @@ namespace MvcBasic.Controllers
                 DataCadastro = DateTime.Now
             };
 
-            ViewBag.Cliente = cliente;
+            //ViewBag.Cliente = cliente;
+
+            ViewBag.Cliente = "Texto";
+
+            //ViewData["Cliente"] = cliente;
 
             return View("Index", cliente);
         }
@@ -80,9 +84,20 @@ namespace MvcBasic.Controllers
                     DataCadastro = DateTime.Now
                 }
             };
-
+          
             var cliente = listaCliente.Where(c => c.Nome == nome).ToList();
+
+            if (!cliente.Any())
+            {
+                TempData["erro"] = "Nenhum cliente selecionado";
+                return RedirectToAction("ErroPesquisa");
+            }
             return View("Lista", cliente);
+        }
+
+        public ActionResult ErroPesquisa()
+        {
+            return View("Error");
         }
     }
 }

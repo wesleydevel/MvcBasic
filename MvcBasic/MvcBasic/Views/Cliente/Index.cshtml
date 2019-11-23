@@ -1,4 +1,5 @@
-﻿@model MvcBasic.Models.Cliente
+﻿@using MvcBasic.Models;
+@model MvcBasic.Models.Cliente
 @{
     ViewBag.Title = "Index";
 }
@@ -11,10 +12,17 @@
     <p>@Model.DataCadastro</p>
 </div>
 
-@{ 
+@*@{ 
     var cliente = ViewBag.Cliente;
     <p><b>@cliente.Nome</b></p>
-}
+}*@
 
 
+@*@{ 
+    var cliente = ViewData["Cliente"] as Cliente;
+    <p><b>@cliente.Nome</b></p>
+}*@
+
+
+<p><b>@ViewData["Cliente"]</b></p>
 
