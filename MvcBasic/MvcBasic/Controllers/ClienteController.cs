@@ -1,4 +1,5 @@
-﻿using MvcBasic.Models;
+﻿using MvcBasic.Context;
+using MvcBasic.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,7 @@ namespace MvcBasic.Controllers
         // GET: Cliente
         public ActionResult Teste()
         {
-            var cliente = new Cliente()
-            {
-                Nome = "Asp",
-                SobreNome = "NET",
-                DataCadastro = DateTime.Now
-            };
+            var cliente = new MvcBasicContext().Clientes.SingleOrDefault(c => c.Id == 1);
 
             //ViewBag.Cliente = cliente;
 
