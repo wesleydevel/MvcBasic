@@ -15,6 +15,15 @@ namespace MvcBasic.Controllers
     {
         private MvcBasicContext db = new MvcBasicContext();
 
+
+        public ActionResult Teste()
+        {
+            ViewBag.Ola = "<h2>Olá</h2>";
+            ViewBag.Id = new SelectList(db.Clientes.ToList(), "Id", "Nome",4);
+            return View(db.Clientes.ToList());
+        }
+
+
         // GET: Clientes
         public ActionResult Index()
         {
