@@ -24,6 +24,7 @@ namespace MvcBasic.Models
         public string SobreNome { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Name ="Data Cadastro")]
         public DateTime DataCadastro { get; set; }
 
         [MaxLength(150, ErrorMessage = "Máximo de caracteres execedido")]
