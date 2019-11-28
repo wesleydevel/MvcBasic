@@ -15,16 +15,12 @@ namespace MvcBasic.Controllers
     {
         private MvcBasicContext db = new MvcBasicContext();
 
-
         public ActionResult Teste()
         {
-            ViewBag.Ola = "<h2>Olá</h2>";
-            ViewBag.Id = new SelectList(db.Clientes.ToList(), "Id", "Nome",4);
-            return View(db.Clientes.ToList());
+            return Json(db.Clientes.ToList(), JsonRequestBehavior.AllowGet);
         }
-
-
         // GET: Clientes
+        [HttpGet]
         public ActionResult Index()
         {
             return View(db.Clientes.ToList());
@@ -56,10 +52,16 @@ namespace MvcBasic.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,SobreNome,DataCadastro")] Cliente cliente)
+        public ActionResult Create(Cliente cliente)
         {
             if (ModelState.IsValid)
             {
+                if (!cliente.Email.Contains(".br"))
+                {
+                    ModelState.AddModelError(String.Empty, "O E-mail não pode ser internacional");
+                    return View(cliente);
+                }
+                cliente.DataCadastro = DateTime.Now;
                 db.Clientes.Add(cliente);
                 db.SaveChanges();
                 return RedirectToAction("Index");
