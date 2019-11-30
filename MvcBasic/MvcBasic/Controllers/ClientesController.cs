@@ -15,9 +15,10 @@ namespace MvcBasic.Controllers
     {
         private MvcBasicContext db = new MvcBasicContext();
 
-        public ActionResult Teste()
+        [OutputCache(Duration = 30, VaryByParam ="*")]
+        public ContentResult Teste()
         {
-            return Json(db.Clientes.ToList(), JsonRequestBehavior.AllowGet);
+            return Content(DateTime.Now.ToString());
         }
         // GET: Clientes
         [HttpGet]
